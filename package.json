@@ -9,6 +9,7 @@
 		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"type": "module",
+	
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
