@@ -41,3 +41,46 @@ export const SocketContextProvider = ({ children }) => {
 
 	return <SocketContext.Provider value={{ socket, onlineUsers }}>{children}</SocketContext.Provider>;
 };
+
+// import { createContext, useState, useEffect, useRef, useContext } from "react";
+// import { useAuthContext } from "./AuthContext";
+// import io from "socket.io-client";
+
+// const SocketContext = createContext();
+
+// export const useSocketContext = () => {
+// 	return useContext(SocketContext);
+// };
+
+// export const SocketContextProvider = ({ children }) => {
+// 	const [onlineUsers, setOnlineUsers] = useState([]);
+// 	const { authUser } = useAuthContext();
+// 	const socketRef = useRef(null); // <-- useRef to persist across renders
+
+// 	useEffect(() => {
+// 		if (authUser) {
+// 			socketRef.current = io("https://mern-chat-app-9z0o.onrender.com", {
+// 				query: { userId: authUser._id },
+// 				transports: ["websocket"],
+// 				withCredentials: true
+// 			});
+
+// 			socketRef.current.on("getOnlineUsers", (users) => {
+// 				setOnlineUsers(users);
+// 			});
+// 		}
+
+// 		return () => {
+// 			if (socketRef.current) {
+// 				socketRef.current.close();
+// 				socketRef.current = null;
+// 			}
+// 		};
+// 	}, [authUser]);
+
+// 	return (
+// 		<SocketContext.Provider value={{ socket: socketRef.current, onlineUsers }}>
+// 			{children}
+// 		</SocketContext.Provider>
+// 	);
+// };
